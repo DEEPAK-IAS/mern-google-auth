@@ -1,0 +1,71 @@
+.main-container {
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+  background-size: 400% 400%;
+  animation: gradientBG 8s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92.5vh;
+}
+
+.container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  min-width: 340px;
+  height: 600px;
+}
+
+.input-group-container {
+  margin-top: 0.5rem;
+  height: 215px;
+}
+
+.heading-container {
+  height: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.heading-container #user-image {
+  height: 100%;
+  width: 120px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateX(45%);
+  transition: all 0.3s;
+}
+
+.heading-container .camera-icon {
+  position: relative;
+  height: 30px;
+  width: 30px;
+  top: 40%;
+  transform: translateX(-280%);
+  background-color: rgb(210, 134, 27);
+  border-radius: 30%;
+  transition: all 0.3s;
+}
+
+.message {
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

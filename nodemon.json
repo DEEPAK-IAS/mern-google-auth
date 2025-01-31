@@ -1,0 +1,4 @@
+{
+  "watch": ["backend", "client"],
+  "ext": "js,json,jsx,html,css"
+}

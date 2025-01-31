@@ -1,0 +1,89 @@
+.Header {
+  position: sticky;
+  top: 0;
+  height: 7.5vh;
+  width: 100%;
+  background-color: white;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.382);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: all 0.3s ease linear;
+}
+
+nav {
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: all 0.3s ease linear;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+Header input {
+  width: 230px;
+  height: 33px;
+  outline: none;
+  text-indent: 10px;
+  color: black;
+  border: 1px solid black;
+  border-radius: 3px;
+  transition: all 0.3s ease linear;
+}
+
+.toggleNav {
+  height: 35px;
+  width: 35px;
+  background-color: white;
+  border: none;
+  outline: none;
+  display: none;
+}
+
+.toggleNav svg {
+  width: 30px;
+  height: 30px;
+}
+
+#userIcon {
+  height: 40px;
+  width: 40px;
+  background-color: rgb(216, 223, 223);
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 850px) {
+  nav {
+    height: 50vh;
+    width: 300px;
+    flex-direction: column;
+    position: absolute;
+    top: 7.6vh;
+    right: 0px;
+    text-align: center;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.382);
+    background-color: white;
+  }
+  .toggleNav {
+    display: block;
+  }
+  .d-none {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  
+  .link:hover,
+  .link:focus {
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.382);
+    transition: all 0.3s ease linear;
+  }
+}

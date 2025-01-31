@@ -1,0 +1,66 @@
+.main-container {
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+  background-size: 400% 400%;
+  animation: gradientBG 8s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92.5vh;
+}
+
+.container1 {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  min-width: 340px;
+  height: 550px;
+}
+
+.form h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #333;
+  margin-top: 2rem;
+}
+
+.input-group-container1 {
+  margin-top: 2.5rem;
+  height: 170px;
+}
+
+.handle-password-group {
+  padding: 2;
+  margin-top: 1rem;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: space-between;
+}
+
+#remember-me + label {
+  transform: translateX(-10px);
+}
+
+.message {
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.forget-password {
+  margin-left: 10px;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
