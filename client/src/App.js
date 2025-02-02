@@ -5,7 +5,8 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import UsersPage from './pages/UsersPage';
 import Profile from './pages/Profile';  
-import ResetPassword from "./pages/ResetPassword"
+import ResetPassword from "./pages/ResetPassword";
+import AdminLogin from './pages/AdminLogin';
 
 function App() {
 
@@ -17,10 +18,11 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/signin" element={<Signin />}/>
         <Route path="/signup" element={<Signup />}/>
-        <Route path="/admin" element={<UsersPage />}/>
+        <Route path="/admin" element={<AdminLogin />}/>
         <Route path="/profile" element={<Profile />}/>
         <Route path="/admin" element={<UsersPage />}/>
         <Route path="/forget-password" element={<ResetPassword />}/>
+        <Route path="/usersPage" element={<UsersPage />}/>
       </Routes>
     </div>
   );

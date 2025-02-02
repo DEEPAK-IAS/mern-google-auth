@@ -1,63 +1,106 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/effect-cards";
-import "../styles/UsersPage.css";
-import { EffectCards } from "swiper/modules";
+import React, { useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
+import '../styles/UsersPage.css';
 
-const users = [
-  { id: 1, name: "Alice Johnson", image: "https://randomuser.me/api/portraits/women/1.jpg" },
-  { id: 2, name: "John Doe", image: "https://randomuser.me/api/portraits/men/2.jpg" },
-  { id: 3, name: "Emma Smith", image: "https://randomuser.me/api/portraits/women/3.jpg" },
-  { id: 4, name: "Michael Brown", image: "https://randomuser.me/api/portraits/men/4.jpg" },
-  { id: 5, name: "Sophie Turner", image: "https://randomuser.me/api/portraits/women/4.jpg" },
-  { id: 6, name: "James Lee", image: "https://randomuser.me/api/portraits/men/5.jpg" },
-  { id: 7, name: "Olivia Harris", image: "https://randomuser.me/api/portraits/women/5.jpg" },
-  { id: 8, name: "David White", image: "https://randomuser.me/api/portraits/men/6.jpg" },
-  { id: 9, name: "Sophia Brown", image: "https://randomuser.me/api/portraits/women/6.jpg" },
-];
+export default function UsersPage() {
+  const [users, setUsers] = useState([]);
+  const [backgroundImage, setBackgroundImage] = useState("");
 
-export default function App() {
-  const [bgImage, setBgImage] = useState(users[0].image); 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/v1/user/all", { method: "GET" });
+        const data = await res.json();
+        console.log(data);
+        if (data.success === true) {
+          setUsers(data.data.users);
+          setBackgroundImage(data.data.users[0]?.avatar || "default.jpg"); // Set initial background safely
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleBackground = (user) => {
+    setBackgroundImage(user.avatar);
+  };
+
+  const handleEdit = (user) => {
+
+  } 
+
+  const handleBlock = async (user) => {
+    try {
+      const res = await fetch(`/api/v1/user/${user._id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          isBlocked: !user.isBlocked
+        })
+      });
+
+      const data = await res.json();
+      setUsers((prevUsers) =>
+        prevUsers.map((u) =>
+          u._id === user._id ? { ...u, isBlocked: data.data.user.isBlocked } : u
+        )
+      );
+
+
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
   return (
     <>
-      <div
+      <div 
         className="background"
         style={{
-          backgroundImage: `url(${bgImage})`,
-          // backgroundSize: "cover",
-          // backgroundPosition: "center",
-          // width: "100%",
-          // height: "92.5vh",
-          // transition: "background 0.5s ease-in-out",
-          zIndex: -1,
+          backgroundImage: `url(${backgroundImage})`,
+          opacity: 0.5
         }}
       />
-      
-      <div className="content">
-        <h1>Meet Our Users</h1>
-
-        
-        <Swiper
-          effect={"cards"}
-          grabCursor={true}
-          modules={[EffectCards]}
-          className="mySwiper"
-          onSlideChange={(swiper) => setBgImage(users[swiper.activeIndex].image)}
-          slidesPerView={1} 
-          centeredSlides={true} 
-        >
-          {users.map((user) => (
-            <SwiperSlide key={user.id}>
-              <div className="user-card">
-                <img src={user.image} alt={user.name} />
-                <h3>{user.name}</h3>
+      <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        pagination={{ clickable: true }}
+        modules={[Pagination]}
+        className="mySwiper"
+        onSlideChange={(swiper) => setBackgroundImage(users[swiper.activeIndex]?.avatar || "default.jpg")}
+      >
+        {users.map((user, index) => (
+          <SwiperSlide 
+            key={index} 
+            className='userSlide'
+            onClick={() => handleBackground(user)} // Fixed the onClick function
+          >
+            <div className="userCard">
+              <img src={user.avatar} alt="user-image" className='userImage'/>
+              <p className='userName'>{user.username}</p>
+              <div className="btn-container">
+                <button 
+                  onClick={() => handleEdit(user)}
+                >
+                  Edit
+                </button>
+                <button 
+                  onClick={() => handleBlock(user)}
+                >
+                  Block
+                </button>
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </>
   );
 }

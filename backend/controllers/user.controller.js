@@ -52,7 +52,6 @@ async function getUsers(req, res, next) {
 async function updateUser(req, res, next) {
   if (req.verifyUserId != req.params.id) next(errHandler(401, "Unauthorized"));
   if (req.body.id || req.body._id) next(errHandler(400, "cannot update id"));
-
   try {
     const userToUpdate = await User.findById(req.params.id);
     if (!userToUpdate) return next(errHandler(404, "User not found"));
@@ -66,13 +65,13 @@ async function updateUser(req, res, next) {
         email: req.body.email,
         password: req.body.password,
         avatar: req.body.avatar,
+        isBlocked: req.body.isBlocked
       },
       {new : true}
     );
 
     const { password: _, ...rest } = updatedUser._doc;
-    res.status(200).cookie("user_info", JSON.stringify(rest))
-      .json({
+    res.status(200).json({
         success: true,
         data: {
           user: rest,

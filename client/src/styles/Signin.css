@@ -27,16 +27,17 @@
 }
 
 .input-group-container1 {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   height: 170px;
 }
 
-.handle-password-group {
+.handle-password-group1 {
   padding: 2;
   margin-top: 1rem;
   font-size: 0.9em;
   display: flex;
   justify-content: space-between;
+  height: 30px;
 }
 
 #remember-me + label {

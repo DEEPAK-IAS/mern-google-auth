@@ -77,7 +77,7 @@ const Signin = () => {
               }
               imgSrc={view}
             />
-            <div className="handle-password-group">
+            <div className="handle-password-group1">
               <input
                 type="checkbox"
                 id="remember-me"

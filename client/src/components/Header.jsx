@@ -22,6 +22,7 @@ const Header = () => {
       { window.location.pathname === "/admin" && <input type="text" placeholder='Search' />}
       <nav ref={navBarRef} className='d-none'>
         <Link to="/" className='link'>Home</Link>
+        <Link to="/admin" className='link'>Admin</Link>
         <Link to="/about" className='link'>About</Link>
         <Link to="/contact" className='link'>Contact</Link>
         {userInfo ? (

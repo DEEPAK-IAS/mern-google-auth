@@ -1,64 +1,63 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
-}
 
 .background {
+  height: 92.5vh;
+  width: 100%;
   position: absolute;
   top: 7.5vh;
-  left: 0;
-  width: 100%;
-  height: 92.5vh;
-  background-size: cover;
   background-position: center;
-  z-index: -1; /* Ensures background stays behind the content */
-  transition: background 0.5s ease-in-out;
-}
-
-.content {
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  padding-top: 50px;
-  color: white;
-}
-
-h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .mySwiper {
-  width: 40%; 
-  max-width: 600px; 
-  margin: 0 auto; 
-  margin-top: 20px;
+  height: 300px;
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
 }
 
-.user-card {
-  text-align: center;
-  height: 300px; 
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.userSlide {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.26);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.user-card img {
-  width: 120px; 
-  height: 120px;
-  border-radius: 50%;
-  margin-bottom: 20px;
+.swiper-pagination-bullet {
+  display: none;
 }
 
-.user-card h3 {
-  font-size: 1.5rem;
-  color: #333;
+
+.userSlide .userCard {
+  height: 100%;
+  width: 100%;
+}
+
+.userSlide .userCard img {
+  height: 70%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.userSlide .userCard p {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.btn-container button {
+  height: 30px;
+  width: 45%;
+  border: none;
 }
