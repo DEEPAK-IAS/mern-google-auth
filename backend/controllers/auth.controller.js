@@ -81,7 +81,7 @@ async function google(req, res, next) {
       const { password: _, ...rest } = user._doc;
       res
         .status(200)
-        .cookie("user_access_token", accessToken, { httpOnly: true })
+        .cookie("access_token", accessToken)
         .json({
           success: true,
           data: {

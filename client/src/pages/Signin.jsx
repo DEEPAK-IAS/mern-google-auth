@@ -7,6 +7,7 @@ import Button from "../components/Button";
 import { inputValidation } from "../utils/inputValidation";
 import OAuthGoogle from "../components/OAuthGoogle";
 import { setNewState } from "../utils/state";
+import { setErrMessage, setBorder } from "../utils/userInteraction";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -40,11 +41,15 @@ const Signin = () => {
       });
 
       const data = await res.json();
-      console.log(data);
       if(data.success === true) {
         setNewState("user_info", data.data.user);
         navigate("/");
         window.location.reload();
+      } else {
+        const emailInput = document.querySelector("#email");
+        const errInput = document.querySelector(".err-element");
+        setErrMessage(errInput, data.message);
+        setBorder(emailInput, "2px solid red", "red");
       }
     }
   };

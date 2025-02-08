@@ -47,6 +47,7 @@ export default function UsersPage() {
       });
 
       const data = await res.json();
+      console.log(data);
       setUsers((prevUsers) =>
         prevUsers.map((u) =>
           u._id === user._id ? { ...u, isBlocked: data.data.user.isBlocked } : u
