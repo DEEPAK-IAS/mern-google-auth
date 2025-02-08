@@ -10,11 +10,6 @@ const adminRoute = require("./routes/admin.route");
 mongodb.connect();
 app.use(express.json())
 app.use(cookieParser());
-<<<<<<< HEAD
-app.use(express.urlencoded({ extended: true }));
-=======
->>>>>>> d6295ea455f79eb9ba43abba789ef117d9be1c88
-
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/admin", adminRoute);
